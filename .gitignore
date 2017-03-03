@@ -1,0 +1,54 @@
+# build directorys
+/build.*/
+/build.*
+/.fakeroot.*
+
+# automatically downloaded source files
+/sources/
+/.stamps/
+
+# prebuild target binarys to provide
+/target/
+/target
+
+# scripts for getting and packing source packages
+/tools/mkpkg/*
+!/tools/mkpkg/mkpkg_*
+
+# mkpkg temp
+mkpkg-temp
+
+# private working directory
+/.work/
+
+# meta patches
+/patches/unused/
+
+# symlinks...
+/sources
+/.work
+
+# backup files
+*.orig
+
+# crap
+.DS_Store
+.delete*
+
+# homedirectory stuff
+.ssh
+.ccache*
+.bash*
+.zsh*
+.zcomp*
+.zdirs
+.less*
+.config
+.nano*
+.histfile
+.OpenELEC
+.viminfo
+.gem
+
+# git stuff
+.gitconfig
