@@ -1,0 +1,51 @@
+#!/bin/sh
+
+################################################################################
+#      This file is part of OpenELEC - http://www.openelec.tv
+#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#
+#  OpenELEC is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  OpenELEC is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################
+
+. /etc/profile
+
+oe_setup_addon emulator.tools.retroarch
+
+RETROARCH_CONFIG_DIR="$ADDON_HOME/config"
+RETROARCH_CONFIG_FILE="$RETROARCH_CONFIG_DIR/retroarch.cfg"
+RETROARCH_SAVEFILES_DIR="$ADDON_HOME/savefiles"
+RETROARCH_SYSTEM_DIR="$ADDON_HOME/system"
+
+chmod a+x $ADDON_DIR/bin/*
+
+if [ ! -f "$RETROARCH_CONFIG_FILE" ]; then
+  mkdir -p $RETROARCH_CONFIG_DIR
+  if [ -f $ADDON_DIR/config/retroarch.cfg ]; then
+    cp $ADDON_DIR/config/retroarch.cfg $RETROARCH_CONFIG_FILE
+  fi
+fi
+
+if [ ! -f "$RETROARCH_SAVEFILES_DIR" ]; then
+  mkdir -p $RETROARCH_SAVEFILES_DIR
+fi
+
+if [ ! -f "$RETROARCH_SYSTEM_DIR" ]; then
+  mkdir -p $RETROARCH_SYSTEM_DIR
+fi
+
+systemctl stop kodi
+modprobe snd_bcm2835
+$ADDON_DIR/bin/retroarch -c $RETROARCH_CONFIG_FILE -L $ADDON_DIR/lib/libretro/$1_libretro.so "$2"
+rmmod snd_bcm2835
+systemctl start kodi

@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="romcollectionbrowser"
-PKG_VERSION="e372f71"
+PKG_VERSION="da13501"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

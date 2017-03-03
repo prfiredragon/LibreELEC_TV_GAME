@@ -192,5 +192,8 @@ post_install() {
 
 post_makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/retroarch
+  mkdir -p $INSTALL/usr/bin
     cp $PKG_DIR/scripts/retroarch-config $INSTALL/usr/lib/retroarch
+    cp $PKG_DIR/scripts/retroarch.sh $INSTALL/usr/bin
+    cp $PKG_DIR/scripts/retroarch.start $INSTALL/usr/bin
 }
