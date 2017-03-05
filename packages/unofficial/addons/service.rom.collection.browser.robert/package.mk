@@ -16,13 +16,14 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="romcollectionbrowser"
-PKG_VERSION="da13501"
+PKG_NAME="service.rom.collection.browser.robert"
+PKG_VERSION="131f133"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-PKG_URL="https://github.com/prfiredragon/romcollectionbrowser/archive/$PKG_VERSION.tar.gz"
+PKG_URL="https://github.com/prfiredragon/RomCollectionBrowserService/archive/$PKG_VERSION.tar.gz"
+PKG_SOURCE_DIR="RomCollectionBrowserService-131f1336de8c57d41185f8c4bfd208f6e192727f"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""
@@ -31,7 +32,7 @@ PKG_LONGDESC="rom.collection.browser"
 PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
-PKG_ADDON_TYPE="xbmc.addon.metadata"
+PKG_ADDON_TYPE="xbmc.service"
 
 configure_target() {
 #  cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
@@ -39,6 +40,8 @@ configure_target() {
 #        -DCMAKE_MODULE_PATH=$SYSROOT_PREFIX/usr/lib/kodi \
 #        -DCMAKE_PREFIX_PATH=$SYSROOT_PREFIX/usr \
 #        ..
+mkdir -p .install_pkg/usr/share/kodi/addons/$PKG_NAME/
+cp *.* .install_pkg/usr/share/kodi/addons/$PKG_NAME/
 ls
 }
 
@@ -52,8 +55,8 @@ ls
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/
-  cp -R $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID/
+  cp -R $PKG_BUILD/.install_pkg/usr/share/kodi/addons/$PKG_NAME/* $ADDON_BUILD/$PKG_ADDON_ID/
 
-#  ADDONSO=$(xmlstarlet sel -t -v "/addon/extension/@library_linux" $ADDON_BUILD/$PKG_ADDON_ID/addon.xml)
-#  cp -L $PKG_BUILD/.install_pkg/usr/lib/kodi/addons/$PKG_NAME/$ADDONSO $ADDON_BUILD/$PKG_ADDON_ID/
+  ADDONSO=$(xmlstarlet sel -t -v "/addon/extension/@library_linux" $ADDON_BUILD/$PKG_ADDON_ID/addon.xml)
+  cp -L $PKG_BUILD/.install_pkg/usr/lib/kodi/addons/$PKG_NAME/$ADDONSO $ADDON_BUILD/$PKG_ADDON_ID/
 }
