@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="service.rom.collection.browser.robert"
-PKG_VERSION="131f133"
+PKG_VERSION="0ad12fd"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
 PKG_URL="https://github.com/prfiredragon/RomCollectionBrowserService/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="RomCollectionBrowserService-131f1336de8c57d41185f8c4bfd208f6e192727f"
+PKG_SOURCE_DIR="RomCollectionBrowserService-0ad12fdb8ca803c723cc1eefaf4fb0f493fd6210"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""
