@@ -45,7 +45,7 @@ if [ ! -f "$RETROARCH_SYSTEM_DIR" ]; then
 fi
 
 systemctl stop kodi
-modprobe snd_bcm2835
-$ADDON_DIR/bin/retroarch -c $RETROARCH_CONFIG_FILE -L $ADDON_DIR/lib/libretro/$1_libretro.so "$2"
-rmmod snd_bcm2835
+#modprobe snd_bcm2835
+$ADDON_DIR/bin/retroarch -L $ADDON_DIR/lib/libretro/$1_libretro.so "$2"
+#rmmod snd_bcm2835
 systemctl start kodi

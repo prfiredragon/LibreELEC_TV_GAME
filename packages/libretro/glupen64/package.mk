@@ -57,6 +57,9 @@ make_target() {
     OdroidC1)
       make platform=odroid BOARD=ODROID-C1
       ;;
+    Odroid_C1)
+      make platform=odroid BOARD=ODROID-C1
+      ;;
     OdroidXU3)
       make platform=odroid BOARD=ODROID-XU3
       ;;

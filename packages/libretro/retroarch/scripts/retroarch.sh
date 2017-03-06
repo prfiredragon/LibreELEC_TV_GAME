@@ -5,6 +5,6 @@
 
 . /etc/profile
 
-oe_setup_addon emulator.tools.retroarch
+#oe_setup_addon emulator.tools.retroarch
 
-systemd-run $ADDON_DIR/bin/retroarch.start "$@"
+systemd-run /usr/bin/retroarch.start "$@"
